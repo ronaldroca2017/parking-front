@@ -98,7 +98,7 @@ $(document).ready(function () {
        if(response.status == 'ok')
        {
           $.cookie("test", response.data.id, { expires : 3600 , path:'/'});
-          alert($.cookie.get('test'));
+          alert($.cookie('test'));
           window.location.href='index.html';
        }else{
         alert('Usuario y contraseña incorrectos');
