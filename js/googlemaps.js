@@ -33,7 +33,7 @@ var GoogleMap = {
       window.setTimeout(GoogleMap.extdata(e), 3000);
     });
     this.conectarDB(this.inw,this.obj);
-    //this.iniciarAutocompletar();
+    this.iniciarAutocompletar();
   },
 
   addMarker: function ( position ) {
