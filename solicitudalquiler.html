@@ -92,7 +92,7 @@ $(document).ready(function () {
   var login = $.cookie('upc');
   console.log(login);
 
-  if ( login == 'undefined' || login == '' ) {
+  if ( typeof login == 'undefined' || login == '' ) {
     window.location.href = 'login.html';
   }
 
