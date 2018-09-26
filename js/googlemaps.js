@@ -91,15 +91,25 @@ var GoogleMap = {
       var dv =$("#map").height()*Math.PI*Math.cos(cm.lat*Math.PI/180)/Math.pow(2,nz+2);
       var dh =$("#map").width()*Math.PI*Math.cos(cm.lng*Math.PI/180)/Math.pow(2,nz);
 
-      document.getElementById('listoffers').innerHTML="";
-
+      $('.list_offers').html('');
 
       var arrayampliado=[];
       arraytemporal.forEach( function(valor, indice, arreglo) {
-        var distancia=Math.pow(Math.pow(cm.lat-valor.latitude,2)+Math.pow(cm.lng-valor.longitude,2),0.5);
-        arrayampliado.push({latitude: valor.latitude, longitude: valor.longitude, distance: distancia, location:"Cerca a ti", address: valor.address, price:valor.price, days:valor.days, image_1:valor.image_1, of_id:valor.id})
-      }
-      );
+        var distancia=Math.pow(Math.pow(cm.lat-valor.latitud,2)+Math.pow(cm.lng-valor.longitud,2),0.5);
+        arrayampliado.push({
+          latitude: valor.latitud,
+          longitude: valor.longitud,
+          distance: distancia,
+          location: valor.nombre,
+          address: valor.direccion,
+          //price:valor.price,
+          price: 1.00,
+          days: 1,
+          image_1: 'http://parking.oscarpasache.com/images/garage.jpg',
+          of_id: valor.id
+        })
+      });
+
       arrayampliado=arrayampliado.sort(function (a, b) {
         return a.distance - b.distance ;
       });
@@ -107,35 +117,38 @@ var GoogleMap = {
       arraytemporal=arrayampliado;
       console.log(cm);
       console.log(arraytemporal);
+      var _html = '';
       arraytemporal.forEach( function(valor, indice, arreglo) {
-      //var la =parseFloat(valor.location.split(",")[0]);
-      //var lo =parseFloat(valor.location.split(",")[1]);
-      var la =valor.latitude;
-      var lo =valor.longitude;
+        //var la =parseFloat(valor.location.split(",")[0]);
+        //var lo =parseFloat(valor.location.split(",")[1]);
+        var la =valor.latitude;
+        var lo =valor.longitude;
 
-      if ( (la<cm.lat+dv) && (la>cm.lat-dv) && (lo<cm.lng+dh) && (lo>cm.lng-dh) ){
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(la,lo),
-          map: GoogleMap.obj,
-          title: valor.address,
-          animation: google.maps.Animation.DROP
-        });
-        var idstring="o"+numid;
-        var michi="#"+idstring;
-        marker.addListener('click', function() {
-          for (var i = 0; i < GoogleMap.painted.length; i++) {
-           $( GoogleMap.painted[i]).removeClass( "boxresaltado" );
-          }
-          $( michi ).addClass( "boxresaltado" );
-          GoogleMap.painted.push(michi);
-          document.getElementById(idstring).scrollIntoView();
-        });
-        GoogleMap.markers.push(marker);
-       document.getElementById('listoffers').innerHTML+=GoogleMap.plantilla(valor,pinpon,numid);
-        pinpon=pinpon*(-1);
-        numid+=1;
+        if ( (la<cm.lat+dv) && (la>cm.lat-dv) && (lo<cm.lng+dh) && (lo>cm.lng-dh) ){
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(la,lo),
+            map: GoogleMap.obj,
+            title: valor.address,
+            animation: google.maps.Animation.DROP
+          });
+          var idstring="o"+numid;
+          var michi="#"+idstring;
+          marker.addListener('click', function() {
+            for (var i = 0; i < GoogleMap.painted.length; i++) {
+             $( GoogleMap.painted[i]).removeClass( "boxresaltado" );
+            }
+            $( michi ).addClass( "boxresaltado" );
+            GoogleMap.painted.push(michi);
+            document.getElementById(idstring).scrollIntoView();
+          });
+          GoogleMap.markers.push(marker);
+          _html += GoogleMap.plantilla(valor,pinpon,numid);
+          pinpon=pinpon*(-1);
+          numid+=1;
         }
-     });
+      });
+
+      $('.list_offers').html(_html);
 
       var redsqrt = [
         {lat: cm.lat+dv, lng: cm.lng+dh},
