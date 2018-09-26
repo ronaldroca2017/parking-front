@@ -57,11 +57,46 @@ var GoogleMap = {
     } else {
       var imageg=of.image_1;
     }
-    if (clase==1){
+    /*if (clase==1){
       return "<div id='o"+ nid +"' class='box-oferta box-oferta2'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='"+ imageg +"'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><td id='idts'> <button><a href='/parking/show' onclick='show_offer("+ of.of_id +")'>Ver detalle</a></button></td></tr></table></td></tr></table></div><br>";
     } else {
       return "<div id='o"+ nid +"' class='box-oferta'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='"+ imageg +"'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><td id='idts'> <button><a href='/parking/show' onclick='show_offer("+ of.of_id +")'>Ver detalle</a></button></td></tr></table></td></tr></table></div><br>";
-    }
+    }*/
+
+    return '<table class="table" id='o"+ nid +"' style="font-size:12px">\
+      <thead>\
+        <tr>\
+          <th>'+ of.address +'</th>\
+          <th></th>\
+          <th>Costo: S/. ' + of.price + '</th>\
+        </tr>\
+      </thead>\
+      <tbody>\
+        <tr>\
+          <td rowspan="3"><img src="'+ imageg +'" height="80" width="80"></td>\
+          <td>Grande</td>\
+          <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>\
+        </tr>\
+        <tr>\
+          <td>Con techo</td>\
+          <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>\
+        </tr>\
+        <tr>\
+          <td>Control</td>\
+          <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>\
+        </tr>\
+        <tr>\
+          <td>Hora inicio</td>\
+          <td>Hora fin</td>\
+          <td></td>\
+        </tr>\
+        <tr>\
+          <td>10:00</td>\
+          <td>22:00</td>\
+          <td><a href="solicitudalquiler.html" class="btn btn-info" role="button">Ver detalle</a></td>\
+        </tr>\
+      </tbody>\
+    </table>';
   },
 
   ubicart: function(){
@@ -80,7 +115,7 @@ var GoogleMap = {
     if (GoogleMap.consult != null){
       GoogleMap.consult.abort();
       GoogleMap.consult=null;
-      console.log("Abortado");
+      //console.log("Abortado");
     }
     GoogleMap.consult = $.post(GoogleMap.urlser, datosjs, function(response){
       arraytemporal=response.data;
@@ -115,8 +150,8 @@ var GoogleMap = {
       });
 
       arraytemporal=arrayampliado;
-      console.log(cm);
-      console.log(arraytemporal);
+      //console.log(cm);
+      //console.log(arraytemporal);
       var _html = '';
       arraytemporal.forEach( function(valor, indice, arreglo) {
         //var la =parseFloat(valor.location.split(",")[0]);
@@ -184,7 +219,7 @@ var GoogleMap = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        console.log(GoogleMap.center);
+        //console.log(GoogleMap.center);
         inw.setPosition(GoogleMap.center);
         inw.setContent('Ud esta aqui!');
         obj.setCenter(GoogleMap.center);
