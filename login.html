@@ -109,7 +109,7 @@ $(document).ready(function () {
     e.preventDefault();
     var txtemail=$('#email').val();
     var txtpwd=$('#password').val();
-    $.post('http://localhost:8000/api/login', {
+    $.post('http://apiparking.oscarpasache.com/api/login', {
       "email": txtemail,
       "password": txtpwd,
     }, function(response){
