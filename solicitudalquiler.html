@@ -47,7 +47,8 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 offset-sm-3">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
       <legend class="text-center header"><h3>Solicitud de alquiler de estacionamiento</h3></legend>
       <form class="form-horizontal" action="procesarpago.html">
         <div class="form-group">
@@ -87,6 +88,12 @@ var id = url.searchParams.get("id");
 var address = url.searchParams.get("address");
 
 $(document).ready(function () {
+  var login = $.cookie('upc');
+
+  if ( login == '' ) {
+    window.location.href = 'login.html';
+  }
+
   $('#nombreEstacionamiento').val(address);
 });
 </script>
