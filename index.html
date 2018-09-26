@@ -26,14 +26,14 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-4">
-      <ul class="nav navbar-nav navbar-right">
+      <!--<ul class="nav navbar-nav navbar-right">-->
 
         <!--<li><a href="#">Ofrecer un lugar</a></li>-->
-        <li><a href="login.html">Iniciar sesión</a></li>
-        <li><a href="contacto.html">Regístrate</a></li>
+        <!--<li><a href="login.html">Iniciar sesión</a></li>
+        <li><a href="contacto.html">Regístrate</a></li>-->
 
 
-      </ul>
+      <!--</ul>-->
       <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
         <li><a href="registrarauto.html">Registrar auto</a></li>
         <!--<li class="dropdown">
@@ -51,51 +51,40 @@
   </div><!-- /.container -->
 </nav><!-- /.navbar -->
 <div class="container">
-  <h1>Usuarios</h1>
+  
   <ul class="contentUsers"></ul>
-  <form>
-    <input type="text" name="nombre" id="nombre" />
-   <button type="button" class="btn btn-primary" id="crearusuario">Regístrate</button>
-  </form>
+  
 </div>
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $.get('http://localhost:8000/api/users',{}, function( response ){
-      var _html = '';
-      if (response.status == 'ok' ) {
-        for (var i = 0; i < response.data.length; i++) {
-          var user = response.data[i];
-          console.log(user);
-          _html += '<li>'+ user.name +' - '+ user.email + ' - ' + user.cellphone +'</li>';
-        }
-      }
-      if (typeof $.cookie('user') === 'undefined'){
-         alert("no existe");
-        } else {
-         alert("Existe cookie");
-        }
-      $('.contentUsers').html(_html);
-    }, 'json');
+    var txtid=$.cookie("upc");
+    var _html='';
+    $.post('http://localhost:8000/api/obtenerusuario', {
+      "id": txtid
+    }, function(response){
   
-
-  //Crear usuario
-  $('#crearusuario').click(function(e){
-     e.preventDefault();
- var txtnombre=$('#nombre').val();
- console.log(txtnombre);
- $.post('http://localhost:8000/api/users', {
-     "email": "dante@gmail.com",
-     "password":"66699",
-     "name": txtnombre,
-     "cellphone": "986969874"
- }, function(response){
-       console.log(response);
+       if(response.status == 'ok')
+       {
+           _html +='<li><a href="buscarestacionamiento.html">¿Buscas Estacionamiento?</a></li>'; 
+           _html +='<li><a href="estacionamiento_horario.html">Ofrece un lugar</a></li>';
+           _html += '<li><a href="perfil.html">'+ response.data.email + '</a></li>';
+           _html += '<li><a onclick="cerrarsesion()">Cerrar sesión</a></li>';
+          //window.location.href='index.html';
+       }else{
+           _html +='<li><a href="login.html">Iniciar sesión</a></li>';
+           _html +='<li><a href="contacto.html">Regístrate<li>';
+       }
+       $('#navbar-collapse-4').html('<ul class="nav navbar-nav navbar-right">' + _html + '</ul>');
      }, 'json');
 
      });
-
-  });
+</script>
+<script>
+  function cerrarsesion (){
+    $.removeCookie('upc');
+    window.location.href='index.html';
+  }
 </script>
 </body>
 </html>
