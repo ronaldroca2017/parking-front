@@ -150,7 +150,7 @@ var GoogleMap = {
 
       $('.list_offers').html(_html);
 
-      var redsqrt = [
+      /*var redsqrt = [
         {lat: cm.lat+dv, lng: cm.lng+dh},
         {lat: cm.lat+dv, lng: cm.lng-dh},
         {lat: cm.lat-dv, lng: cm.lng-dh},
@@ -173,7 +173,7 @@ var GoogleMap = {
         window.setTimeout(GoogleMap.extdata(e), 3000);
 
       }, {passive: true});
-      sqrtONmap.setMap(GoogleMap.obj);
+      sqrtONmap.setMap(GoogleMap.obj);*/
     }, 'json');
   },
 
