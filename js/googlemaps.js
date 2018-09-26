@@ -63,7 +63,7 @@ var GoogleMap = {
       return "<div id='o"+ nid +"' class='box-oferta'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='"+ imageg +"'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><td id='idts'> <button><a href='/parking/show' onclick='show_offer("+ of.of_id +")'>Ver detalle</a></button></td></tr></table></td></tr></table></div><br>";
     }*/
 
-    return '<table class="table" id='o"+ nid +"' style="font-size:12px">\
+    return '<table class="table" id="o'+ nid +'" style="font-size:12px">\
       <thead>\
         <tr>\
           <th>'+ of.address +'</th>\
