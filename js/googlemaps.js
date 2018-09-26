@@ -223,9 +223,9 @@ var GoogleMap = {
         inw.setPosition(GoogleMap.center);
         inw.setContent('Ud esta aqui!');
         obj.setCenter(GoogleMap.center);
-        //GoogleMap.ubicart();
+        GoogleMap.ubicart();
       }, function() {
-        //GoogleMap.ubicart();
+        GoogleMap.ubicart();
         GoogleMap.handleLocationError(true, inw, obj.getCenter());
       });
     }
