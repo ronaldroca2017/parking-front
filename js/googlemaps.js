@@ -93,7 +93,7 @@ var GoogleMap = {
         <tr>\
           <td>10:00</td>\
           <td>22:00</td>\
-          <td><a href="solicitudalquiler.html" class="btn btn-info" role="button">Ver detalle</a></td>\
+          <td><a href="/solicitudalquiler.html?id='+ nid +'&address='+ of.address +'" class="btn btn-info" role="button">Ver detalle</a></td>\
         </tr>\
       </tbody>\
     </table>';

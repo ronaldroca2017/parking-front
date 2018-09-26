@@ -10,95 +10,85 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-        <nav class="navbar navbar-inverse">
-                <div class="container">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">Reserva de estacionamiento</a>
-                  </div>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Reserva de estacionamiento</a>
+    </div>
 
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="navbar-collapse-4">
-                      <ul class="nav navbar-nav navbar-right">
+    <div class="collapse navbar-collapse" id="navbar-collapse-4">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="buscarestacionamiento.html">¿Buscar estacionamiento?</a></li>
+        <li><a href="estacionamiento_horario.html">Ofrecer un lugar</a></li>
+        <li><a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">user01<i class=""></i> </a></li>
+      </ul>
 
-                          <!--<li><a href="#">Ofrecer un lugar</a></li>-->
-                          <li><a href="buscarestacionamiento.html">¿Buscar estacionamiento?</a></li>
-                          <li><a href="estacionamiento_horario.html">Ofrecer un lugar</a></li>
-                          <li>
-                              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">user01<i class=""></i> </a>
-                            </li>
+      <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuración<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Mi perfil</a></li>
+            <li><a href="registrarauto.html">Registrar auto</a></li>
+            <li><a href="#">Buscar estacionamiento</a></li>
+            <li><a href="#">Ofrecer un lugar</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <legend class="text-center header"><h3>Solicitud de alquiler de estacionamiento</h3></legend>
+      <form class="form-horizontal" action="procesarpago.html">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Auto</label>
+          <select class="form-control" id="sel1">
+            <option>Toyota Sedan color negro</option>
+            <option>4x4 Toyoya color azul </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sel2">Estacionamiento</label>
+          <input type="nombre" value="Av. Salaverry 1450" class="form-control" id="nombreEstacionamiento" aria-describedby="emailHelp" placeholder="Teléfono" disabled>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Fecha</label>
+          <input type="nombre" value="02/09/2018" class="form-control" id="fecha" aria-describedby="emailHelp" disabled>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Horario</label>
+          <input type="nombre" value="10:00-22:00" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Teléfono" disabled>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Monto a pagar</label>
+          <input type="nombre" value="25.00" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Teléfono" disabled>
+        </div>
+        <div class="form-check">
+          <button type="submit" class="btn btn-primary">Solicitar estacionamiento</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-                        </ul>
-                        <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
-                          <!--<li><a href="registrarauto.html">Registrar auto</a></li>-->
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuración<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Mi perfil</a></li>
-                              <li><a href="registrarauto.html">Registrar auto</a></li>
-                              <li><a href="#">Buscar estacionamiento</a></li>
-                              <li><a href="#">Ofrecer un lugar</a></li>
-                              <li class="divider"></li>
-                              <li><a href="#">Logout</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                  </div><!-- /.navbar-collapse -->
-                </div><!-- /.container -->
-              </nav><!-- /.navbar -->
-        <div class="container">
-                <div class="row">
-                <!--<h2><strong>Iniciar sesión </strong> <br/></h2><br/>-->
-                    <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-6">
-                        <legend class="text-center header"><h3>Solicitud de alquiler de estacionamiento</h3></legend>
-                        <!-- Start form -->
-                                <form class="form-horizontal" action="procesarpago.html">
-                                  <div class="form-group">
-                                    <label for="exampleInputEmail1">Auto</label>
-                                    <select class="form-control" id="sel1">
-                                            <option>Toyota Sedan color negro</option>
-                                            <option>4x4 Toyoya color azul </option>
-                                          </select>
-                                  </div>
-                                  <div class="form-group">
-                                        <label for="sel2">Estacionamiento</label>
-                                        <input type="nombre" value="Av. Salaverry 1450" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Teléfono" disabled>
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="pwd">Fecha</label>
-                                      <input type="nombre" value="02/09/2018" class="form-control" id="fecha" aria-describedby="emailHelp" disabled>
-                                    </div>
-                                  <div class="form-group">
-                                    <label for="pwd">Horario</label>
-                                    <input type="nombre" value="10:00-22:00" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Teléfono" disabled>
-                                  </div>
-                                  <div class="form-group">
-                                        <label for="exampleInputEmail1">Monto a pagar</label>
-                                        <input type="nombre" value="25.00" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Teléfono" disabled>
-                                  </div>
-                                  <div class="form-check">
-                                    <button type="submit" class="btn btn-primary">Solicitar estacionamiento</button>
-                                  </div>
+<script type="text/javascript">
+var url = new URL(window.location.href);
+var id = url.searchParams.get("id");
+var address = url.searchParams.get("address");
 
-                                </form>
-
-
-                        <!-- End form -->
-                        </div>
-                        <div class="col-sm-3"></div>
-                    <!--</div>-->
-
-                </div>
-            </div>
-
-
+$(document).ready(function () {
+  $('#nombreEstacionamiento').val(address);
+});
+</script>
 </body>
 </html>
