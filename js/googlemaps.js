@@ -11,8 +11,8 @@ var GoogleMap = {
   painted: [],
 
   center: {
-    lat: -12.077450,
-    lng: -77.093677
+    lat: -12.0876296,
+    lng: -77.0501054
   },
 
   init: function () {
