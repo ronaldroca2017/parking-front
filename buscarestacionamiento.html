@@ -1,123 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Buscar estacionamiento</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Buscar estacionamiento</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="js/googlemaps.js"></script>
 </head>
 <body>
-        <nav class="navbar navbar-inverse">
-                <div class="container">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Reserva de estacionamiento</a>
-                  </div>
-              
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="navbar-collapse-4">
-                    <ul class="nav navbar-nav navbar-right">
-                      
-                      <!--<li><a href="#">Ofrecer un lugar</a></li>-->
-                      <li><a href="buscarestacionamiento.html">Buscar estacionamiento</a></li>
-                      <li><a href="estacionamiento_horario.html">Ofrecer un lugar</a></li>
-                      <li>
-                            <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">user01<i class=""></i> </a>
-                          </li>
-                    </ul>
-                    <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
-                      <!--<li><a href="#">Support</a></li>-->
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="https://cdn2.iconfinder.com/data/icons/system-icons/512/489749-Gear-128.png" alt="maridlcrmn" width="20" /> Configuración<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Mi perfil</a></li>
-                          <li><a href="registrarauto.html">Registrar auto</a></li>
-                          <li><a href="#">Buscar estacionamiento</a></li>
-                          <li><a href="#">Ofrecer un lugar</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Cerrar sesión</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div><!-- /.navbar-collapse -->
-                </div><!-- /.container -->
-              </nav><!-- /.navbar -->
-        <div class="container">	
-            <div class="row no-gutter">
-                <div class="col-lg-6">
-                  <div class="col-height left">
-                    <div class="col-text text">
-                      <article>
-                                <form action="/action_page.php">
-                                    <div class="input-group">
-                                      <input type="text" class="form-control" placeholder="Buscar estacionamiento" name="search">
-                                      <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                      </div>
-                                    </div>
-                                  </form>
-                                  <table class="table" style="font-size:12px">
-                                        <thead>
-                                          <tr>
-                                            <th>Av. Salaverry 1450</th>
-                                            <th></th>
-                                            <th>Costo: S/. 25.00</th>
-                                            
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td rowspan="3"><img src="images\garage.jpg" height="80" width="80"></td>
-                                            <td>Grande</td>
-                                            <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                                          </tr>
-                                          <tr>
-                                            <!--<td>Mary</td>-->
-                                            <td>Con techo</td>
-                                            <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                                          </tr>
-                                          <tr>
-                                            <!--<td>July</td>-->
-                                            <td>Control</td>
-                                            <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                                          </tr>
-                                          <tr>
-                                                <td>Hora inicio</td>
-                                                <td>Hora fin</td>
-                                                <td></td> 
-                                          </tr>
-                                          <tr>
-                                                <td>10:00</td>
-                                                <td>22:00</td>
-                                                <td><a href="solicitudalquiler.html" class="btn btn-info" role="button">Ver detalle</a></td> 
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                      </article>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="col-height right">
-                    <div class="col-text text">
-                      <article>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d31194.250651257265!2d-76.9186243!3d-12.2292207!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1535821740200" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                      </article>
-                    </div>
-                  </div>
-                </div>
-              </div>      
-        </div> 
+<nav class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html">Reserva de estacionamiento</a>
+  </div>
 
-            
+  <div class="collapse navbar-collapse" id="navbar-collapse-4">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="buscarestacionamiento.html">Buscar estacionamiento</a></li>
+      <li><a href="estacionamiento_horario.html">Ofrecer un lugar</a></li>
+      <li>
+        <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">user01<i class=""></i> </a>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav><!-- /.navbar -->
+
+<div class="div-maps">
+  <div class="div-block-list">
+    <div class="row">
+      <div class="col-12">
+        <div class="col-height left">
+          <div class="col-text text">
+            <form action="/action_page.php">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar estacionamiento" name="search">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+            </form>
+            <table class="table" style="font-size:12px">
+              <thead>
+                <tr>
+                  <th>Av. Salaverry 1450</th>
+                  <th></th>
+                  <th>Costo: S/. 25.00</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="3"><img src="images\garage.jpg" height="80" width="80"></td>
+                  <td>Grande</td>
+                  <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                </tr>
+                <tr>
+                  <!--<td>Mary</td>-->
+                  <td>Con techo</td>
+                  <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                </tr>
+                <tr>
+                  <!--<td>July</td>-->
+                  <td>Control</td>
+                  <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                </tr>
+                <tr>
+                  <td>Hora inicio</td>
+                  <td>Hora fin</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>10:00</td>
+                  <td>22:00</td>
+                  <td><a href="solicitudalquiler.html" class="btn btn-info" role="button">Ver detalle</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="map"></div>
+</div>
+
+<style type="text/css">
+  .div-maps{
+    position: absolute;
+    top: 54px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .div-maps::after{
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .div-block-list{
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    padding: 30px;
+  }
+
+  #map{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+  }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk0rGdUV92DoRp_HLmB17hczkI-PGwSuc&callback=GoogleMap.init"async defer></script>
 </body>
 </html>
