@@ -254,7 +254,7 @@ var GoogleMap = {
   },
 
   iniciarAutocompletar: function(){
-    this.autocomplete = new google.maps.places.autocomplete((document.getElementById('autocomplete')), {
+    this.autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {
       types: ['geocode'],
       componentRestrictions: {'country': 'pe'}
     });
