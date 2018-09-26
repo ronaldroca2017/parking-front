@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registrate</title>
+    <title>Iniciar sesión</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -20,104 +20,113 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Reserva de estacionamiento</a>
+                    <a class="navbar-brand" href="index.html">Reserva de estacionamiento</a>
                   </div>
-              
+
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse" id="navbar-collapse-4">
-                    <ul class="nav navbar-nav navbar-right">
-                      
-                      <!--<li><a href="#">Ofrecer un lugar</a></li>-->
-                      <li><a href="buscarestacionamiento.html">Buscar estacionamiento</a></li>
-                      <li><a href="estacionamiento_horario.html">Ofrecer un lugar</a></li>
-                      <li>
-                            <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">user01 <i class=""></i> </a>
-                          </li>
-                    </ul>
-                    <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
-                      <!--<li><a href="#">Support</a></li>-->
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="https://cdn2.iconfinder.com/data/icons/system-icons/512/489749-Gear-512.png" alt="maridlcrmn" width="20" />Configuración<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Mi perfil</a></li>
-                          <li><a href="#">Registrar auto</a></li>
-                          <li><a href="#">Solicitar estacionamiento</a></li>
-                          <li><a href="#">Ofrecer un lugar</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Cerrar sesión</a></li>
+                      <ul class="nav navbar-nav navbar-right">
+
+                          <!--<li><a href="#">Ofrecer un lugar</a></li>-->
+                          <li><a href="buscarestacionamiento.html">¿Buscar estacionamiento?</a></li>
+                          <li><a href="estacionamiento_horario.html">Ofrecer un lugar</a></li>
+                          <li>
+                              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">user01<i class=""></i> </a>
+                            </li>
+
                         </ul>
-                      </li>
-                    </ul>
+                        <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
+                          <!--<li><a href="registrarauto.html">Registrar auto</a></li>-->
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuración<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Mi perfil</a></li>
+                              <li><a href="registrarauto.html">Registrar auto</a></li>
+                              <li><a href="#">Buscar estacionamiento</a></li>
+                              <li><a href="#">Ofrecer un lugar</a></li>
+                              <li class="divider"></li>
+                              <li><a href="#">Logout</a></li>
+                            </ul>
+                          </li>
+                        </ul>
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container -->
               </nav><!-- /.navbar -->
-        <div class="container">	
+        <div class="container">
                 <div class="row">
                 <!--<h2><strong>Iniciar sesión </strong> <br/></h2><br/>-->
                     <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
-                        <legend class="text-center header"><h1>Registrar auto</h1></legend>                                
+                        <legend class="text-center header"><h3>Formulario de resgitro de auto</h3></legend>
                         <!-- Start form -->
-                                <form class="form-horizontal" action="index2.html">
-                                  <div class="form-group">
-                                    <label for="exampleInputEmail1">Descripcion del auto</label>
-                                    <input type="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre completo">
-                                  </div>
-                                  <div class="form-group">
-                                        <label for="exampleInputEmail1">Dimensiones del auto</label>
-                                        <!--<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo electronico">-->
-                                        <div class="box-body">
-                                                <div class="row">
-                                                  <div class="col-xs-4">
-                                                    <input type="text" class="form-control" placeholder="Ancho">
-                                                  </div>
-                                                  <div class="col-xs-4">
-                                                    <input type="text" class="form-control" placeholder="Largo">
-                                                  </div>
-                                                  <div class="col-xs-4">
-                                                    <input type="text" class="form-control" placeholder="Alto">
-                                                  </div>
-                                                </div>
-                                              </div>
-                                      </div>
-                                  <div class="form-group">
-                                    <label for="pwd">Número de seguro soat</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese contraseña">
-                                  </div>
-                                  <div class="form-group">
-                                        <label for="exampleInputEmail1">Marca</label>
-                                        <input type="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Marca">
-                                  </div>
-                                  <div class="form-group">
-                                        <label for="exampleInputEmail1">Modelo</label>
-                                        <input type="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Modelo">
-                                  </div>
-                                  <div class="form-group">
-                                        <label for="exampleInputEmail1">Color</label>
-                                        <input type="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Color">
-                                  </div>
-                                  <div class="form-group">
-                                        <label for="exampleInputEmail1">Año de fabricación</label>
-                                        <input type="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Año">
-                                  </div>
+                <form class="form-horizontal formulario-crearauto" action="">
+                  <div class="input-group">
+                      <span class="input-group-addon" id="nombre">Etiqueta auto</span>
+                    <input type="text" class="form-control input-nombre" placeholder="Ejemplo: Sedan negro" aria-describedby="basic-addon1">
+                  </div>
+                                  <div class="input-group">
+                      <span class="input-group-addon" id="marca">Marca</span>
+                    <input type="text" class="form-control input-marca" placeholder="Ejemplo: Toyota" aria-describedby="basic-addon1">
+                  </div>
+                                  <div class="input-group">
+                      <span class="input-group-addon" id="modelo">Modelo</span>
+                    <input type="text" class="form-control input-modelo" placeholder="Ejemplo: Sedan" aria-describedby="basic-addon1">
+                  </div>
+                                  <div class="input-group">
+                      <span class="input-group-addon" id="placa">Placa</span>
+                    <input type="text" class="form-control input-placa" placeholder="Ejemplo: AQX-000" aria-describedby="basic-addon1">
+                  </div>
+                                  <div class="input-group">
+                      <span class="input-group-addon" id="anio">Año</span>
+                    <input type="text" class="form-control input-anio" placeholder="Ejemplo: 2000" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group">
+                      <span class="input-group-addon" id="descripcion">Comentarios</span>
+                    <input type="text" class="form-control input-descripcion" placeholder="Breve descrioción del auto" aria-describedby="basic-addon1">
+                  </div>
+
                                   <div class="form-check">
-                                    <button type="submit" class="btn btn-primary">Registrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
                                   </div>
-                                  <div class="form-group">
-                                      
-                                </div>
+
                                 </form>
-            
-            
+
+
                         <!-- End form -->
                         </div>
                         <div class="col-sm-3"></div>
                     <!--</div>-->
 
                 </div>
-            </div> 
+            </div>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $(document).on("submit", ".formulario-crearauto", function(e){
+          e.preventDefault();
 
-            
+          var inputNombre = $(".input-nombre").val();
+          var inputMarca = $(".input-marca").val();
+          var inputModelo = $(".input-modelo").val();
+          var inputPlaca = $(".input-placa").val();
+          var inputAnio = $(".input-anio").val();
+          var inputDescripcion = $(".input-descripcion").val();
+
+          $.post('http://apiparking.oscarpasachec.com/:8000/api/autos',{
+            "usuario":2,
+            "nombre":inputNombre,
+            "marca":inputMarca,
+            "modelo":inputModelo,
+            "placa":inputPlaca,
+            "anio":inputAnio,
+            "descripcion":inputDescripcion
+          }, function( response ){
+            console.log(response);
+
+          }, 'json');
+      });
+  });
+</script>
+
 </body>
 </html>
