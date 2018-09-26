@@ -413,7 +413,7 @@
             var tarifa = arregloElementos(document.getElementsByName("tarifa[]"));
             var id_estacionamiento_horario = arregloElementos(document.getElementsByName("id_estacionamiento_horario[]"));
             var accion = arregloElementos(document.getElementsByName("accion[]"));
-            var idUsuario = $.cookie('test');//alert($.cookie('test')); 
+            var idUsuario = $.cookie('upc'); 
                  
       var preguntaConfirmacion;
       if(idEstacionamiento!=""){
@@ -423,11 +423,11 @@
       }
  
 
-      if (confirm(preguntaConfirmacion)){
+      if (confirm(preguntaConfirmacion)){ 
 
  
                
-        $.post('http://localhost:8000/api/estacionamiento', {
+        $.post('http://apiparking.oscarpasache.com/api/estacionamiento', {
             "idEstacionamiento" : idEstacionamiento,
             "txt_idTipopropiedad": txt_idTipopropiedad,
             "txt_idTipoEstacionamiento":txt_idTipoEstacionamiento,
@@ -490,7 +490,7 @@
         <script type="text/javascript">
 
              var contador = 0;
-              var id=$.cookie('test'); 
+              var id=$.cookie('upc'); 
               
 
           $(document).ready(function(){
@@ -500,9 +500,9 @@
           $('[data-toggle="tooltip3"]').tooltip();
         
      
-     
+       
 
-      $.get('http://localhost:8000/api/estacionamiento?id='+id, {}, function(response){
+      $.get('http://apiparking.oscarpasache.com/api/estacionamiento?id='+id, {}, function(response){
         
          if(response.status == 'ok') {  
           if(response.data!=null){
