@@ -8,9 +8,9 @@
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="cookie.js"></script>
 
-
-      <style>
+      <style> 
       
       @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
@@ -18,7 +18,7 @@
       color: #a33529;
     }
 
-      input[type="checkbox"], input[type="radio"]{
+      input[type="checkbox"], input[type="radio"]{ 
         position: absolute;
         right: 9000px;
       }
@@ -96,9 +96,9 @@
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
       </nav><!-- /.navbar -->
-      <div class="container">	
+      <div class="container"> 
           <div>
-             <legend class="text-center header"><h2>Registro de estacionamiento y horarios</h2></legend>  
+             <legend class="text-center header"><h2 id="titulo">Registro de estacionamiento y horarios</h2></legend>  
           </div>      
       <form class="form-horizontal" action="index2.html">
       <div style="float: left;width: 42%;">
@@ -125,7 +125,7 @@
                     <option value="1">Pequeño</option>
                     <option value="2">Mediano</option>
                     <option value="3">Grande </option>
-                    <option value="4">moto</option>
+                    <option value="4">Moto</option>
                     <option value="5">Auto</option>
                     <option value="6">Van</option>
                     <option value="7">Custer</option>
@@ -188,10 +188,10 @@
           <div class="col-sm-3">
              <label for="inputValue"  control-label">Día de la semana</label>
           <div class = "form-group">
-             <input type="date" name="fecha"  min="2018-09-24" class="form-control"  value = "2018-09-26";
+             <input type="date" name="fecha"  min="2018-09-26" class="form-control"  value = "2018-09-26";
                                       max="2019-09-26" step="1"  onChange="diaSemana()" id="fechaSeleccionada">
           </div> 
-         </div> 
+         </div>  
 
           <div class="col-sm-2">
              <label for="inputValue" control-label">Hora Ing.</label>
@@ -315,8 +315,8 @@
 
     </form>
 
-    <!-- MODAL -->
-    <div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <!-- MODAL MENSAJE DE REGISTRO -->
+    <div class="modal fade" id="mostrarmodalRegistro" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
        <div class="modal-dialog">
           <div class="modal-content">
              <div class="modal-header">
@@ -326,6 +326,26 @@
              <div class="modal-body">
                 <h4>Se realizó el registro del estacionamiento con sus horarios.</h4>
                
+         </div>
+             <div class="modal-footer">
+            <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+         </div>
+          </div>
+       </div>
+    </div>
+
+
+        <!-- MODAL MENSAJE DE ACTUALIZACION -->
+    <div class="modal fade" id="mostrarmodalActualizar" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+       <div class="modal-dialog">
+          <div class="modal-content">
+             <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>ACTUALIZACIÓN EXITOSA!</h3>
+         </div>
+             <div class="modal-body">
+                <h4>Se realizó la actualización de los datos del estacionamiento y horarios.</h4>
+                
          </div>
              <div class="modal-footer">
             <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
@@ -365,7 +385,8 @@
 
         $('#btnRegistrar').click(function(e){
            e.preventDefault();
-        var txt_idTipopropiedad = $('#txt_idTipopropiedad').val();
+            var idEstacionamiento = $('#idEstacionamiento').val();  
+            var txt_idTipopropiedad = $('#txt_idTipopropiedad').val();
             var txt_idTipoEstacionamiento = $('#txt_idTipoEstacionamiento').val();
             var nombre = $('#nombre').val();
             var direccion = $('#direccion').val();
@@ -383,44 +404,56 @@
               }
 
 
-
-           // var idEstacionamiento = $('#id_estacionamiento').val();  
+   
+           
             var dia = arregloElementos(document.getElementsByName("dia[]"));
             var fechaSeleccionada = arregloElementos(document.getElementsByName("fechaCalendario[]"));
             var h_ingreso = arregloElementos(document.getElementsByName("h_ingreso[]"));
             var h_salida = arregloElementos(document.getElementsByName("h_salida[]"));
             var tarifa = arregloElementos(document.getElementsByName("tarifa[]"));
+            var id_estacionamiento_horario = arregloElementos(document.getElementsByName("id_estacionamiento_horario[]"));
             var accion = arregloElementos(document.getElementsByName("accion[]"));
+            var idUsuario = $.cookie('test');//alert($.cookie('test')); 
+                 
+      var preguntaConfirmacion;
+      if(idEstacionamiento!=""){
+        preguntaConfirmacion = "Actualizar estacionamiento y horarios?";
+      }else{
+        preguntaConfirmacion = "Registrar estacionamiento y horarios?";
+      }
+ 
 
+      if (confirm(preguntaConfirmacion)){
 
-
-
-      if (confirm("Está seguro de Registrar el estacionamiento y sus horarios?")){
-
-
-              
+ 
+               
         $.post('http://localhost:8000/api/estacionamiento', {
-            //"idEstacionamiento" : idEstacionamiento,
+            "idEstacionamiento" : idEstacionamiento,
             "txt_idTipopropiedad": txt_idTipopropiedad,
             "txt_idTipoEstacionamiento":txt_idTipoEstacionamiento,
             "nombre": nombre,
             "direccion": direccion,
-            "latitud": latitud,
+            "latitud": latitud, 
             "longitud":longitud,
             "dia": dia,
             "fechaSeleccionada": fechaSeleccionada,
             "h_ingreso": h_ingreso,
             "h_salida": h_salida,
             "tarifa": tarifa,
-            "accion" : accion
+            "idUsuario": idUsuario,
+            "id_estacionamiento_horario" : id_estacionamiento_horario,
+            
 
         }, function(response){
               console.log(response);
              
                 if ( response.status == 'ok' ) {
-                  $("#mostrarmodal").modal("show");
-                   
-
+                  if(idEstacionamiento!=""){
+                     $("#mostrarmodalActualizar").modal("show");  
+                   }else{
+                      $("#mostrarmodalRegistro").modal("show");
+                   }
+ 
                 }
             }, 'json');
 
@@ -457,22 +490,24 @@
         <script type="text/javascript">
 
              var contador = 0;
+              var id=$.cookie('test'); 
+              
+
           $(document).ready(function(){
             $('#btnRegistrar').hide();
-  $('[data-toggle="tooltip1"]').tooltip();
-  $('[data-toggle="tooltip2"]').tooltip();
-  $('[data-toggle="tooltip3"]').tooltip();
+          $('[data-toggle="tooltip1"]').tooltip();
+          $('[data-toggle="tooltip2"]').tooltip();
+          $('[data-toggle="tooltip3"]').tooltip();
+        
      
-      var id="20";
-
      
 
       $.get('http://localhost:8000/api/estacionamiento?id='+id, {}, function(response){
         
-         if(response.status == 'ok') {
+         if(response.status == 'ok') {  
           if(response.data!=null){
             console.log(response.data);
-            $('#idEstacionamiento').val(response.data.id_estacionamiento);
+            $('#idEstacionamiento').val(response.data.id);
             $('#txt_idTipopropiedad').val(response.data.id_tipo_propiedad);
             $('#txt_idTipoEstacionamiento').val(response.data.id_tipo_estacionamiento);
             $('#nombre').val(response.data.nombre);
@@ -482,51 +517,66 @@
    
             console.log(response.dataArray);
 
-        
+         
         }
 
-          if(response.dataArray!=null){
+    if(response.dataArray!=null){
 
-            for(var i=0;i<response.dataArray.length;i++)
-  {
+    for(var i=0;i<response.dataArray.length;i++)
+    {
 
-    if(response.dataArray[i]["reservado"] == 1){
-      var tr='<tr style = "background:#d9534f; color: #fff;" class = "selected" id="fila' + contador +'">';
-       var opcion='<td><button id="btnReservado" type = "button" class="btn btn-warning" title="Eliminar horario" data-toggle="tooltip2" onclick="mensaje()"; >X</button></td></tr>';
+      if(response.dataArray[i]["reservado"] == 1){
+        var tr='<tr style = "background:#d9534f; color: #fff;" class = "selected" id="fila' + contador +'">';
+         var opcion='<td><button id="btnReservado" type = "button" class="btn btn-warning" title="Eliminar horario" data-toggle="tooltip2" onclick="mensaje()"; >X</button></td></tr>';
+       
+      }else{
+        var tr='<tr class = "selected" id="fila' + contador +'">';
+        var opcion="<td><button  type = 'button' class='btn btn-warning' title='Eliminar horario' data-toggle='tooltip3' onclick='eliminar("+contador+");' >X</button></td></tr>";
      
-    }else{
-      var tr='<tr class = "selected" id="fila' + contador +'">';
-      var opcion="<td><button  type = 'button' class='btn btn-warning' title='Eliminar horario' data-toggle='tooltip3' onclick='eliminar("+contador+");' >X</button></td></tr>";
+      }
    
-    }
+        var td1="<td><input type='hidden' name='dia[]' value="+response.dataArray[i]["dia"]+">"+response.dataArray[i]["dia"]+"</td>";
+        var td2="<td><input type='hidden' name='fechaCalendario[]' value="+response.dataArray[i]["fecha_calendario"]+">"+response.dataArray[i]["fecha_calendario"]+"</td>";
+        var td3="<td><input type='hidden' name='h_ingreso[]' value="+response.dataArray[i]["hora_ingreso"]+">"+response.dataArray[i]["hora_ingreso"]+"</td>";
+        var td4="<td><input type='hidden' name='h_salida[]' value="+response.dataArray[i]["hora_salida"]+">"+response.dataArray[i]["hora_salida"]+"</td>"; 
+        var td5="<td><input type='hidden' name='tarifa[]' value="+response.dataArray[i]["tarifa"]+">"+response.dataArray[i]["tarifa"]+"</td>";
+        var td6="<td style = 'visibility: hidden; display:none'>"+response.dataArray[i]["reservado"]+"</td>";
+        var td7="<td style = 'visibility: hidden; display:none'><input type='hidden' name='accion[]' value='M'>M</td>";
+        var td8="<td style = 'visibility: hidden; display:none'><input type='hidden' name='id_estacionamiento_horario[]' value="+response.dataArray[i]["id"]+"></td>";
+       
+         
+        contador++; 
 
-      var td1="<td><input type='hidden' name='dia[]' value="+response.dataArray[i]["dia"]+">"+response.dataArray[i]["dia"]+"</td>";
-      var td2="<td><input type='hidden' name='fechaCalendario[]' value="+response.dataArray[i]["fecha_calendario"]+">"+response.dataArray[i]["fecha_calendario"]+"</td>";
-      var td3="<td><input type='hidden' name='h_ingreso[]' value="+response.dataArray[i]["hora_ingreso"]+">"+response.dataArray[i]["hora_ingreso"]+"</td>";
-      var td4="<td><input type='hidden' name='h_salida[]' value="+response.dataArray[i]["hora_salida"]+">"+response.dataArray[i]["hora_salida"]+"</td>";
-      var td5="<td><input type='hidden' name='tarifa[]' value="+response.dataArray[i]["tarifa"]+">"+response.dataArray[i]["tarifa"]+"</td>";
-      var td6="<td style = 'visibility: hidden; display:none'>"+response.dataArray[i]["reservado"]+"</td>";
-      var td7="<td style = 'visibility: hidden; display:none'><input type='hidden' name='accion[]' value='M'></td>";
    
       
-      contador++;
+       $("#detalles").append(tr+td1+td2+td3+td4+td5+td6+td7+td8+opcion); 
 
-
-    
-     $("#detalles").append(tr+td1+td2+td3+td4+td5+td6+td7+opcion); 
-
+       
      
-   
-  }
+    }
 
-      $('#btnRegistrar').text('Modificar');
+      $('#btnRegistrar').text('Actualizar');
       $('#btnRegistrar').show();
+
+ 
+
+      if(response.data.id==""){
+        document.getElementById("titulo").innerHTML = "Registro de estacionamiento y horarios";
+
+      }else{
+        document.getElementById("titulo").innerHTML = "Actualizar datos de estacionamiento y horarios";
+      }
 
     }
          }else{
           alert('vacio');
          }
        }, 'json');
+
+ 
+     
+       
+
 
 
             $('#btnAgregar').click(function(e){
@@ -595,7 +645,7 @@
          
             
             if(tarifa!="" && tarifa>0){
-              var fila = '<tr class = "selected" id="fila' + contador +'"><td><input type="hidden" name="dia[]" value="'+dia+'">'+dia+'</td><td><input type="hidden" name="fechaCalendario[]" value="'+fechaCalendario+'">'+fechaCalendario+'</td><td><input type="hidden" name="h_ingreso[]" value="'+h_ingreso+'">'+h_ingreso+'</td><td><input type="hidden" name="h_salida[]" value="'+h_salida+'">'+h_salida+'</td><td><input type="hidden" name="tarifa[]" value="'+tarifa+'">'+tarifa+'</td> <td style = "visibility: hidden; display:none"><input type="hidden" name="reservado" value="-1">-1</td> <td style = "visibility: hidden; display:none"><input type="hidden" name="accion[]" value="N">N</td><td><button type = "button" class="btn btn-warning" title="Eliminar horario"  onclick="eliminar('+contador+');" >X</button></td></tr>' 
+              var fila = '<tr class = "selected" id="fila' + contador +'"><td><input type="hidden" name="dia[]" value="'+dia+'">'+dia+'</td><td><input type="hidden" name="fechaCalendario[]" value="'+fechaCalendario+'">'+fechaCalendario+'</td><td><input type="hidden" name="h_ingreso[]" value="'+h_ingreso+'">'+h_ingreso+'</td><td><input type="hidden" name="h_salida[]" value="'+h_salida+'">'+h_salida+'</td><td><input type="hidden" name="tarifa[]" value="'+tarifa+'">'+tarifa+'</td> <td style = "visibility: hidden; display:none"><input type="hidden" name="reservado" value="-1">-1</td> <td style = "visibility: hidden; display:none"><input type="hidden" name="accion[]" value="N">N</td><td style = "visibility: hidden; display:none"><input type="hidden" name="id_estacionamiento_horario[]" value=""></td><td><button type = "button" class="btn btn-warning" title="Eliminar horario"  onclick="eliminar('+contador+');" >X</button></td></tr>'   
 
 
 
