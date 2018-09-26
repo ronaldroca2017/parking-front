@@ -8,7 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+    <script src="js/jquery.cookie.js"></script>
     <script src="funciones.js"></script>
 </head>
 <body>
@@ -22,17 +22,17 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Reserva de estacionamiento</a>
+                    <a class="navbar-brand" href="#">Reserva de estacionamiento</a>
                   </div>
-
+              
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse" id="navbar-collapse-4">
                     <ul class="nav navbar-nav navbar-right">
-
+                      
                       <!--<li><a href="#">Ofrecer un lugar</a></li>-->
                       <li><a href="login.html">Iniciar sesión</a></li>
                       <li><a href="contacto.html">Registrate</a></li>
-
+                      
                     </ul>
                     <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
                       <li><a href="#">Support</a></li>
@@ -50,13 +50,13 @@
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container -->
               </nav><!-- /.navbar -->
-        <div class="container">
+        <div class="container">	
                 <div class="row">
                 <!--<h2><strong>Iniciar sesión </strong> <br/></h2><br/>-->
                     <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
-                        <legend class="text-center header"><h1>Registrate</h1></legend>
+                        <legend class="text-center header"><h1>Datos personales</h1></legend>                                
                         <!-- Start form -->
                                 <form class="form-horizontal" action="index.html">
                                   <div class="form-group">
@@ -73,77 +73,56 @@
                                   </div>
                                   <div class="form-group">
                                         <label for="tel">Teléfono</label>
-                                        <input type="text" maxlength="9" class="form-control" id="telefono" placeholder="Teléfono" onkeypress="return valida(event)">
+                                        <input type="text" class="form-control" id="telefono" placeholder="Teléfono" onkeypress="return valida(event)">
                                   </div>
-                                  <div class="form-check">
-                                    <button type="button" class="btn btn-primary" id="registraruser">Regístrate</button>
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="exampleInputEmail1">¿Ya estás registrado?.<a href="login.html">Inicia sesión</a></label>
-
-                                </div>
+                                  <!--<div class="form-check">
+                                    <button type="button" class="btn btn-primary" id="actualizaruser">Actualizar datos</button>
+                                  </div>-->
                                 </form>
-
-
+            
+                          
                         <!-- End form -->
                         </div>
                         <div class="col-sm-3"></div>
                     <!--</div>-->
 
                 </div>
-            </div>
+            </div> 
 
-          <script>
-            $(document).ready(function () {
-            $('#registraruser').click(function(e){
-              e.preventDefault();
-              var strnombre=$('#nombre').val();
-              var strmail=$('#email').val();
-              var strpwd=$('#password').val();
-              var strtelefono=$('#telefono').val();
+    <script>
 
-              if(strnombre.length==0){
-                alert("El nombre es obligatorio");
-                return false;
-              }
-             else if(strmail.length==0 ){
-                alert('El email es obligatorio');
-                return false;
-              }
-              else if(strpwd.length==0 ){
-                alert('La contraseña es obligatoria');
-                return false;
-              }
-              else if(strtelefono.length==0 ){
-                alert('El telefono es obligatorio');
-                return false;
-              }
-              
-              $.post('http://localhost:8000/api/users',{
-                "email":strmail,
-                "password":strpwd,
-                "name":strnombre,
-                "cellphone":strtelefono
-              },function(response){
-                alert("El registro se ha guardado exitosamente");
-                window.location = "login.html";
-              },'json');
+  $(document).ready(function () {
+    var txtid=$.cookie("upc");
+    var _html='';
+    $.post('http://localhost:8000/api/obtenerusuario', {
+      "id": txtid
+    }, function(response){
+  
+       if(response.status == 'ok')
+       {
+           _html +='<li><a href="buscarestacionamiento.html">¿Buscas Estacionamiento?</a></li>'; 
+           _html +='<li><a href="estacionamiento_horario.html">Ofrece un lugar</a></li>';
+           _html += '<li><a href="perfil.html">'+ response.data.email + '</a></li>';
+           _html += '<li><a onclick="cerrarsesion()">Cerrar sesión</a></li>';
+          
+            //Datos de usuario
+            $('#nombre').val(response.data.name);
+            $('#email').val(response.data.email);
+            //$('#nombre').val(response.data.name);
+            $('#telefono').val(response.data.cellphone);
+       }else{
+           _html +='<li><a href="login.html">Iniciar sesión</a></li>';
+           _html +='<li><a href="contacto.html">Regístrate<li>';
+       }
+       $('#navbar-collapse-4').html('<ul class="nav navbar-nav navbar-right">' + _html + '</ul>');
+     }, 'json');
 
-            });
-          });
-            function valida(e){
-              tecla =(document.all) ? e.keycode : e.which;
+     });
 
-              //Tecla de reproceso para borrar. siempre la permite
-              if(tecla==8){
-                return true;
-              }
-
-              //Patron de entrada en caso solo acepte números
-              patron=/[0-9]/;
-              tecla_final=String.fromCharCode(tecla);
-              return patron.test(tecla_final);
-            }
-          </script>
+   function cerrarsesion (){
+    $.removeCookie('upc');
+    window.location.href='index.html';
+  }
+</script>
 </body>
 </html>
