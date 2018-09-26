@@ -90,6 +90,7 @@ var address = url.searchParams.get("address");
 
 $(document).ready(function () {
   var login = $.cookie('upc');
+  console.log(login);
 
   if ( login == '' ) {
     window.location.href = 'login.html';
