@@ -76,7 +76,7 @@
           <input type="nombre" value="25.00" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Teléfono" disabled>
         </div>
         <div class="form-check">
-          <button type="submit" class="btn btn-primary">Solicitar estacionamiento</button>
+          <button type="submit" class="btn btn-primary btnSending">Solicitar estacionamiento</button>
         </div>
       </form>
     </div>
@@ -99,12 +99,14 @@ $(document).ready(function () {
 
   $(document).on('submit', '.formSendSolicitud', function (e) {
     e.preventDefault();
+    $('.btnSending').html('Enviando...');
     $.post('http://apiparking.oscarpasache.com/api/solicitud', {
       'usuario' : user,
       'estacionamiento' : id
     }, function (response) {
       if ( response.status == 'ok' ) {
         alert('Gracias por enviar tu solicitud, en breves momentos nos estaremos poniendo en contacto contigo.');
+        window.location.href = 'index.html';
       } else {
         alert('Lo sentimos en estos momentos no podemos procesar tu solictud, intentalo más tarde.');
       }
