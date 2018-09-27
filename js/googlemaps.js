@@ -68,7 +68,7 @@ var GoogleMap = {
         <tr>\
           <th>'+ of.address +'</th>\
           <th></th>\
-          <th>Costo: S/. ' + of.price + '</th>\
+          <th>Costo: S/. 25.00</th>\
         </tr>\
       </thead>\
       <tbody>\
