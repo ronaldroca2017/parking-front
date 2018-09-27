@@ -51,7 +51,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
       <legend class="text-center header"><h3>Solicitud de alquiler de estacionamiento</h3></legend>
-      <form class="form-horizontal" action="procesarpago.html">
+      <form class="form-horizontal formSendSolicitud" action="">
         <div class="form-group">
           <label for="exampleInputEmail1">Auto</label>
           <select class="form-control" id="sel1">
@@ -89,14 +89,26 @@ var id = url.searchParams.get("id");
 var address = url.searchParams.get("address");
 
 $(document).ready(function () {
-  var login = $.cookie('upc');
-  console.log(login);
+  var user = $.cookie('upc');
 
-  if ( typeof login == 'undefined' || login == '' ) {
+  if ( typeof user == 'undefined' || user == '' ) {
     window.location.href = 'login.html';
   }
 
   $('#nombreEstacionamiento').val(address);
+
+  $(document).on('submit', 'formSendSolicitud', function (e) {
+    $.post('http://apiparking.oscarpasache.com/api/solicitud', {
+      'usuario' : user
+      'estacionamiento' : id
+    }, function (response) {
+      if ( response.status == 'ok' ) {
+        alert('Gracias por enviar tu solicitud, en breves momentos nos estaremos poniendo en contacto contigo.');
+      } else {
+        alert('Lo sentimos en estos momentos no podemos procesar tu solictud, intentalo más tarde.');
+      }
+    });
+  });
 });
 </script>
 </body>
