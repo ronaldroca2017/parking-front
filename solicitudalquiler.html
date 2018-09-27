@@ -97,10 +97,10 @@ $(document).ready(function () {
 
   $('#nombreEstacionamiento').val(address);
 
-  $(document).on('submit', 'formSendSolicitud', function (e) {
+  $(document).on('submit', '.formSendSolicitud', function (e) {
     e.preventDefault();
     $.post('http://apiparking.oscarpasache.com/api/solicitud', {
-      'usuario' : user
+      'usuario' : user,
       'estacionamiento' : id
     }, function (response) {
       if ( response.status == 'ok' ) {
